@@ -1,0 +1,142 @@
+/* General Styles */
+.recensie-container {
+  padding: 16px;
+}
+
+/* Movie Header */
+.movie-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.movie-header:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.02);
+}
+
+.movie-header h3 {
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.movie-header h3:hover {
+  color: #000;
+}
+
+.movie-header p {
+  margin-bottom: 24px;
+  color: #666;
+  font-size: 1.1rem;
+}
+
+/* Movie Cards Grid */
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+/* Rating Overview Section */
+.rating-overview {
+  padding: 16px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+/* Rating Overview Header */
+.rating-overview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+/* Rating Item */
+.rating-item {
+  margin-bottom: 16px;
+  padding: 16px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rating-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Snackbar Styling */
+.snackbar {
+  width: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.snackbar.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rating-item {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Media Queries */
+@media (max-width: 600px) {
+  .movie-header h3 {
+    font-size: 1.5rem;
+  }
+
+  .movie-header p {
+    font-size: 1rem;
+  }
+
+  .movie-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+  }
+
+  .rating-item {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 400px) {
+  .movie-header {
+    padding: 12px;
+  }
+
+  .movie-header h3 {
+    font-size: 1.3rem;
+  }
+
+  .movie-header p {
+    font-size: 0.9rem;
+  }
+
+  .rating-item {
+    padding: 10px;
+    border-radius: 6px;
+  }
+}

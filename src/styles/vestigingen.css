@@ -1,0 +1,55 @@
+.vestigingen-container {
+    padding: 24px;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+  }
+  
+  .vestigingen-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
+  .vestigingen-description {
+    margin-bottom: 24px;
+    color: #666;
+    font-size: 1.1rem;
+  }
+  
+  .vestigingen-search-bar {
+    margin-bottom: 24px;
+    max-width: 600px;
+  }
+  
+  .vestigingen-search-input .MuiOutlinedInput-root {
+    border-radius: 12px;
+  }
+  
+  .vestigingen-search-input .MuiInputLabel-root {
+    font-weight: 500;
+  }
+  
+  .vestigingen-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 16px;
+    justify-content: center;
+  }
+  
+  @media (min-width: 600px) {
+    .vestigingen-grid {
+      grid-template-columns: repeat(2, minmax(200px, 1fr));
+    }
+  }
+  
+  @media (min-width: 960px) {
+    .vestigingen-grid {
+      grid-template-columns: repeat(3, minmax(250px, 1fr));
+    }
+  }
+  
+  .vestigingen-no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #777;
+  }
