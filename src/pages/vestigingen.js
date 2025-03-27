@@ -3,6 +3,7 @@ import CardComponent from '../components/card.js';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import { Helmet } from 'react-helmet';
 import '../styles/vestigingen.css';
 
 class Vestigingen extends Component {
@@ -12,7 +13,10 @@ class Vestigingen extends Component {
       searchTerm: '',
     };
 
-    // Predefined list of theaters containing details such as name, address, phone, and email
+    /**
+     * Predefined list of theaters containing details such as name, address, phone, and email.
+     * This data is used to display the list of theaters and filter them based on user input.
+     */
     this.theaters = [
       { name: 'Cinema Amsterdam', address: '123 Filmstraat, Amsterdam', phone: '+31 20 123 4567', email: 'info@cinemaamsterdam.nl' },
       { name: 'Rotterdam Movie Palace', address: '456 Movieplein, Rotterdam', phone: '+31 10 987 6543', email: 'contact@rotterdammovies.nl' },
@@ -27,8 +31,8 @@ class Vestigingen extends Component {
   }
 
   /**
-   * This method handles changes to the search input field.
-   * It updates the state with the new search term entered by the user.
+   * Handles changes to the search input field.
+   * Updates the state with the new search term entered by the user.
    * This state is then used to filter the displayed theaters dynamically.
    * @param {object} e - The event object containing the input value.
    */
@@ -37,10 +41,9 @@ class Vestigingen extends Component {
   };
 
   /**
-   * This method filters the list of theaters based on the current search term.
-   * It checks if the search term matches any part of the theater name, address, or email.
-   * The filtered list is then used to display the appropriate cards.
-   * @returns {Array} - The filtered list of theater objects.
+   * Filters the list of theaters based on the search term entered by the user.
+   * The search term is matched against the name, address, or email of the theaters in a case-insensitive manner.
+   * @returns {Array} - The filtered list of theaters.
    */
   getFilteredTheaters = () => {
     const { searchTerm } = this.state;
@@ -53,8 +56,8 @@ class Vestigingen extends Component {
   };
 
   /**
-   * The render method is responsible for rendering the component's UI.
-   * It includes a title, a description, a search bar for filtering theaters, and a grid of theater cards.
+   * Renders the component's UI.
+   * Includes a title, description, search bar, and a grid of theater cards.
    * The grid dynamically updates based on the filtered list of theaters from getFilteredTheaters().
    * If no theaters match the search term, a fallback message is displayed.
    * @returns {JSX.Element} - The JSX to be rendered by the component.
@@ -63,47 +66,58 @@ class Vestigingen extends Component {
     const filteredTheaters = this.getFilteredTheaters();
 
     return (
-      <Box className="vestigingen-container">
-        {/* Title and Description */}
-        <Typography variant="h3" className="vestigingen-title">
-          Vestigingen
-        </Typography>
-        <Typography variant="body1" className="vestigingen-description">
-          Ontdek onze bioscopen en hun locaties.
-        </Typography>
+      <>
+        {/* SEO Meta tags */}
+        <Helmet>
+          <title>Bioscopen Vestigingen - Zoek je favoriete bioscopen</title>
+          <meta name="description" content="Ontdek bioscopen in Nederland, zoek op locatie, naam of e-mail en vind jouw ideale theater." />
+          <meta name="robots" content="index, follow" />
+        </Helmet>
 
-        {/* Search Bar */}
-        <Box className="vestigingen-search-bar">
-          <TextField
-            label="Zoek bioscoop"
-            placeholder="Typ een plaatsnaam, bioscoopnaam of email"
-            variant="outlined"
-            fullWidth
-            value={this.state.searchTerm}
-            onChange={this.handleSearchChange}
-            className="vestigingen-search-input"
-          />
-        </Box>
+        <Box className="vestigingen-container">
+          {/* Title and Description */}
+          <Typography variant="h3" className="vestigingen-title">
+            Vestigingen
+          </Typography>
+          <Typography variant="body1" className="vestigingen-description">
+            Ontdek onze bioscopen en hun locaties.
+          </Typography>
 
-        {/* Cards Grid */}
-        <Box className="vestigingen-grid">
-          {filteredTheaters.length > 0 ? (
-            filteredTheaters.map((theater, index) => (
-              <CardComponent
-                key={index}
-                name={theater.name}
-                address={theater.address}
-                phone={theater.phone}
-                email={theater.email}
-              />
-            ))
-          ) : (
-            <Typography variant="body1" className="vestigingen-no-results">
-              Geen bioscopen gevonden.
-            </Typography>
-          )}
+          {/* Search Bar */}
+          <Box className="vestigingen-search-bar">
+            <TextField
+              label="Zoek bioscoop"
+              placeholder="Typ een plaatsnaam, bioscoopnaam of email"
+              variant="outlined"
+              fullWidth
+              value={this.state.searchTerm}
+              onChange={this.handleSearchChange}
+              className="vestigingen-search-input"
+              aria-label="Zoek bioscoop"
+            />
+          </Box>
+
+          {/* Cards Grid */}
+          <Box className="vestigingen-grid">
+            {filteredTheaters.length > 0 ? (
+              filteredTheaters.map((theater, index) => (
+                <CardComponent
+                  key={index}
+                  name={theater.name}
+                  address={theater.address}
+                  phone={theater.phone}
+                  email={theater.email}
+                  aria-label={`Theater: ${theater.name}, located at ${theater.address}`}
+                />
+              ))
+            ) : (
+              <Typography variant="body1" className="vestigingen-no-results">
+                Geen bioscopen gevonden.
+              </Typography>
+            )}
+          </Box>
         </Box>
-      </Box>
+      </>
     );
   }
 }

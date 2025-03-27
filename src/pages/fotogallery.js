@@ -5,65 +5,73 @@ import TextField from '@mui/material/TextField';
 import CardComponent from '../components/cardimage.js';
 import '../styles/fotogallery.css';
 
-// List of movies including their title, description, and associated image
+/**
+ * List of movies to be displayed in the gallery.
+ * Each movie includes a title, description, and an image URL.
+ */
 const theaters = [
   {
     title: 'Marvel Movie',
-    description: 'An action-packed adventure featuring your favorite superheroes. Watch as they save the world in stunning visuals and gripping storytelling.',
+    description: 'Een actievolle film vol superhelden die de wereld redden. Bekijk deze visueel indrukwekkende en spannende film!',
     image: '/images/550x825.jpg',
   },
   {
     title: 'Black Widow',
-    description: 'A great place for movies, offering an immersive cinematic experience with top-tier facilities and sound systems.',
+    description: 'Beleef het meeslepende verhaal van Black Widow in deze spannende film vol actie en intrige.',
     image: '/images/black.jpg',
   },
   {
-    title: 'Captian Marvel',
-    description: 'A heartwarming love story that will take you on an emotional rollercoaster.',
+    title: 'Captain Marvel',
+    description: 'Captain Marvel neemt je mee op een episch avontuur vol spanning en actie in de ruimte.',
     image: '/images/captain.jpg',
   },
   {
     title: 'Civil War',
-    description: 'Explore the far reaches of space in this thrilling science fiction adventure.',
+    description: 'Een intens gevecht tussen superhelden die verdeeld zijn door hun overtuigingen.',
     image: '/images/civilwar.jpeg',
   },
   {
     title: 'Doomsday',
-    description: 'Laugh out loud with this collection of hilarious comedy sketches and stand-up performances.',
+    description: 'Een dystopische film vol spanning, overleving en onverwachte wendingen.',
     image: '/images/doomsday.jpg',
   },
   {
     title: 'Guardians of the Galaxy',
-    description: 'Get ready to be scared with this collection of spine-chilling horror movies.',
+    description: 'Een groep buitenbeentjes moet samenwerken om het universum te redden in deze humorvolle en actievolle film.',
     image: '/images/guardians.jpg',
   },
   {
     title: 'Guardians of the Galaxy Vol. 3',
-    description: 'Learn about the world around you with this series of informative and engaging documentaries.',
+    description: 'De helden keren terug in dit emotionele en spectaculaire vervolg.',
     image: '/images/guardians3.jpg',
   },
   {
-    title: 'Ant Man',
-    description: 'Join your favorite animated characters on a fun-filled adventure.',
+    title: 'Ant-Man',
+    description: 'Volg het verhaal van een onwaarschijnlijke held met de kracht om te krimpen.',
     image: '/images/antman.jpg',
   },
   {
-    title: 'Spiderman',
-    description: 'Revisit the golden age of cinema with these timeless classics.',
+    title: 'Spider-Man',
+    description: 'Een jongeman ontdekt zijn krachten en neemt het op tegen iconische schurken.',
     image: '/images/spiderman.jpg',
   },
   {
     title: 'Black Panther',
-    description: 'Discover hidden gems from independent filmmakers around the world.',
+    description: 'De koning van Wakanda vecht voor zijn volk en toekomst in deze baanbrekende film.',
     image: '/images/blackpanther.jpg',
   },
   {
     title: 'Guardians of the Galaxy Vol. 2',
-    description: 'Experience non-stop action and excitement with these high-octane movies.',
+    description: 'De Guardians beleven opnieuw een episch avontuur in de ruimte.',
     image: '/images/guadians2.jpg',
   },
 ];
 
+/**
+ * Fotogallery component that displays a searchable gallery of movies.
+ * Users can search for movies by title, and the gallery dynamically updates based on the search term.
+ * @returns {JSX.Element} - The JSX content for the Fotogallery component.
+ */
 export default function Fotogallery() {
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -76,52 +84,61 @@ export default function Fotogallery() {
     theater.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  /**
-   * Renders the Fotogallery component which includes a title, description, a search bar, 
-   * and a grid of movie cards dynamically filtered based on the user's search term.
-   * If no movies match the search term, a fallback message is displayed.
-   * @returns {JSX.Element} - The JSX content for the Fotogallery component.
-   */
   return (
-    <Box className="fotogallery-container">
+    <main className="fotogallery-container">
       {/* Page Title and Description */}
-      <Typography variant="h3" className="fotogallery-title">
-        FotoGallerij
-      </Typography>
-      <Typography variant="body1" className="fotogallery-description">
-        Hier vind je een overzicht van films.
-      </Typography>
+      <header>
+        <Typography variant="h4" className="fotogallery-title">
+          FotoGallerij - Ontdek de Beste Films
+        </Typography>
+        <Typography variant="h6" className="fotogallery-description">
+          Blader door onze collectie van topfilms en ontdek nieuwe favorieten.
+        </Typography>
+      </header>
 
-      {/* Search Bar */}
-      <Box className="fotogallery-search-bar">
-        <TextField
-          label="Zoek film"
-          placeholder="Typ een filmtitel"
-          variant="outlined"
-          fullWidth
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="fotogallery-search-input"
-        />
-      </Box>
+      {/* Search Functionality */}
+      <section aria-labelledby="search-title" className="fotogallery-search">
+        <Typography variant="h3" id="search-title">
+          Zoek een film
+        </Typography>
+        <Box className="fotogallery-search-bar">
+          <TextField
+            label="Zoek een film"
+            placeholder="Typ een filmtitel..."
+            variant="outlined"
+            fullWidth
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="fotogallery-search-input"
+            aria-label="Zoek een film"
+          />
+        </Box>
+      </section>
 
-      {/* Movie Cards Grid */}
-      <Box className="fotogallery-grid">
-        {filteredMovies.length > 0 ? (
-          filteredMovies.map((theater, index) => (
-            <CardComponent
-              key={index}
-              title={theater.title}
-              description={theater.description}
-              image={theater.image}
-            />
-          ))
-        ) : (
-          <Typography variant="body1" className="fotogallery-no-results">
-            Geen films gevonden.
-          </Typography>
-        )}
-      </Box>
-    </Box>
+      {/* Movie Grid */}
+      <section aria-labelledby="movies-title" className="fotogallery-movies">
+        <Typography variant="h2" id="movies-title">
+          Filmcollectie
+        </Typography>
+        <Box className="fotogallery-grid">
+          {filteredMovies.length > 0 ? (
+            filteredMovies.map((theater, index) => (
+              <article key={index} className="fotogallery-movie">
+                <CardComponent
+                  title={theater.title}
+                  description={theater.description}
+                  image={theater.image}
+                  alt={`Filmposter van ${theater.title}`}
+                />
+              </article>
+            ))
+          ) : (
+            <Typography variant="body1" className="fotogallery-no-results">
+              Geen films gevonden. Probeer een andere zoekterm.
+            </Typography>
+          )}
+        </Box>
+      </section>
+    </main>
   );
 }
