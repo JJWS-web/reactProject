@@ -1,0 +1,131 @@
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    
+    grid-template-rows: auto 1fr auto;
+}
+.home {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    background-color: #f9f9f9;
+    height: 100%;
+   
+    
+}
+
+footer {
+    min-height: 50px;
+    background: PapayaWhip;
+}
+
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+
+.cardGrid {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1000px;
+    width: 80%;
+    
+   
+}
+
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h2 {
+    color: #34495e;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #666;
+    font-size: 1rem;
+}
+
+
+
+footer {
+    width: 100%;
+    text-align: center;
+    height: 15vh;
+    font-size: 0.9rem;
+    background-color: #2c3e50;
+    color: white;
+   
+}
+
+
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    header p {
+        font-size: 1rem;
+    }
+
+    .cardGrid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    header p {
+        font-size: 0.9rem;
+    }
+
+    .card {
+        width: 95%;
+    }
+
+    footer {
+        font-size: 0.8rem;
+    }
+}

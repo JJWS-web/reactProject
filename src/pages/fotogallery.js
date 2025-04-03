@@ -98,7 +98,7 @@ export default function Fotogallery() {
 
       {/* Search Functionality */}
       <section aria-labelledby="search-title" className="fotogallery-search">
-        <Typography variant="h3" id="search-title">
+        <Typography variant="h5" id="search-title">
           Zoek een film
         </Typography>
         <Box className="fotogallery-search-bar">
@@ -117,7 +117,7 @@ export default function Fotogallery() {
 
       {/* Movie Grid */}
       <section aria-labelledby="movies-title" className="fotogallery-movies">
-        <Typography variant="h2" id="movies-title">
+        <Typography variant="h4" id="movies-title">
           Filmcollectie
         </Typography>
         <Box className="fotogallery-grid">

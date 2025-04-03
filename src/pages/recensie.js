@@ -146,7 +146,7 @@ class Recensie extends Component {
                       title={card.title}
                       description={card.description}
                       image={card.image}
-                      altText={`Movie poster for ${card.title}`} // Added alt text for SEO
+                      altText={`Movie poster for ${card.title}`} 
                       onRatingUpdate={this.handleRatingUpdate}
                     />
                   ))}
