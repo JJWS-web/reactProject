@@ -13,20 +13,9 @@ import Typography from '@mui/material/Typography';
 import Helmet from 'react-helmet';
 import '../styles/recensie.css';
 
-const cards = [
-  { title: 'Marvel Movie', description: 'An action-packed adventure...', image: '/images/550x825.jpg' },
-  { title: 'Black Widow', description: 'A great place for movies...', image: '/images/black.jpg' },
-  { title: 'Captain Marvel', description: 'A heartwarming love story...', image: '/images/captain.jpg' },
-  { title: 'Civil War', description: 'Explore the far reaches of space...', image: '/images/civilwar.jpeg' },
-  { title: 'Doomsday', description: 'Laugh out loud with this collection...', image: '/images/doomsday.jpg' },
-  { title: 'Guardians of the Galaxy', description: 'Get ready to be scared...', image: '/images/guardians.jpg' },
-  { title: 'Guardians of the Galaxy Vol. 3', description: 'Learn about the world...', image: '/images/guardians3.jpg' },
-  { title: 'Ant Man', description: 'Join your favorite animated characters...', image: '/images/antman.jpg' },
-  { title: 'Spiderman', description: 'Revisit the golden age of cinema...', image: '/images/spiderman.jpg' },
-  { title: 'Black Panther', description: 'Discover hidden gems...', image: '/images/blackpanther.jpg' },
-  { title: 'Guardians of the Galaxy Vol. 2', description: 'Experience non-stop action...', image: '/images/guadians2.jpg' },
-];
-
+/**
+ * Recensie component for reviewing movies.
+ */
 class Recensie extends Component {
   constructor(props) {
     super(props);
@@ -40,6 +29,20 @@ class Recensie extends Component {
     };
   }
 
+  cards = [
+    { title: 'Marvel Movie', description: 'An action-packed adventure...', image: '/images/550x825.jpg' },
+    { title: 'Black Widow', description: 'A great place for movies...', image: '/images/black.jpg' },
+    { title: 'Captain Marvel', description: 'A heartwarming love story...', image: '/images/captain.jpg' },
+    { title: 'Civil War', description: 'Explore the far reaches of space...', image: '/images/civilwar.jpeg' },
+    { title: 'Doomsday', description: 'Laugh out loud with this collection...', image: '/images/doomsday.jpg' },
+    { title: 'Guardians of the Galaxy', description: 'Get ready to be scared...', image: '/images/guardians.jpg' },
+    { title: 'Guardians of the Galaxy Vol. 3', description: 'Learn about the world...', image: '/images/guardians3.jpg' },
+    { title: 'Ant Man', description: 'Join your favorite animated characters...', image: '/images/antman.jpg' },
+    { title: 'Spiderman', description: 'Revisit the golden age of cinema...', image: '/images/spiderman.jpg' },
+    { title: 'Black Panther', description: 'Discover hidden gems...', image: '/images/blackpanther.jpg' },
+    { title: 'Guardians of the Galaxy Vol. 2', description: 'Experience non-stop action...', image: '/images/guadians2.jpg' },
+  ];
+
   /**
    * Loads stored ratings from localStorage when the component mounts.
    * Initializes the state with the stored ratings and counts the number of rated movies.
@@ -47,7 +50,7 @@ class Recensie extends Component {
   componentDidMount() {
     const storedRatings = {};
     let count = 0;
-    cards.forEach((card) => {
+    this.cards.forEach((card) => {
       const rating = localStorage.getItem(`rating-${card.title}`);
       if (rating) {
         storedRatings[card.title] = parseFloat(rating);
@@ -140,7 +143,7 @@ class Recensie extends Component {
               </Box>
               {(!isMobile || this.state.showMovies) && (
                 <div className="movie-grid">
-                  {cards.map((card, index) => (
+                  {this.cards.map((card, index) => (
                     <CardComponent
                       key={index}
                       title={card.title}
@@ -195,10 +198,10 @@ class Recensie extends Component {
 }
 
 /**
- * A wrapper component that determines if the user is on a mobile device.
- * Passes the `isMobile` prop to the Recensie component.
- * @param {object} props - The props passed to the component.
- * @returns {JSX.Element} - The Recensie component with the `isMobile` prop.
+ * Responsive wrapper for Recensie.
+ * Adds mobile responsiveness based on screen width.
+ * @param {object} props - Props passed to the Recensie component.
+ * @returns {JSX.Element} - The responsive Recensie component.
  */
 function ResponsiveRecensie(props) {
   const isMobile = useMediaQuery('(max-width:600px)');
