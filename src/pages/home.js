@@ -6,7 +6,7 @@ export default class Home extends Component {
   render() {
     return (
       <main className="home">
-
+        <div className="content">
         <header>
           <h1>Welcome to Our Website</h1>
           <p>Explore our features and learn more about what we offer.</p>
@@ -63,13 +63,14 @@ export default class Home extends Component {
             </CardContent>
           </Card>
         </section>
-
+        </div>
         <footer>
           <p>&copy; TOANO Builder. All rights reserved.</p>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </footer>
-
+        
       </main>
+    
     );
   }
 }
