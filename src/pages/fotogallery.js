@@ -3,6 +3,8 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import CardComponent from '../components/cardimage.js';
+import { Helmet } from 'react-helmet';
+
 import '../styles/fotogallery.css';
 
 export default class Fotogallery extends Component {
@@ -87,15 +89,24 @@ export default class Fotogallery extends Component {
     const filteredMovies = this.getFilteredMovies();
 
     return (
+      
       <main className="fotogallery-container">
-        <header>
+        <helmet>
+        <Helmet>
+  <title>FotoGallerij - Ontdek de Beste Films</title>
+  <meta
+    name="description"
+    content="Blader door onze visuele galerij van populaire films zoals Marvel, Black Panther, Spider-Man en meer. Zoek je favoriete films en ontdek nieuwe toppers."
+  />
+</Helmet>
+
           <Typography variant="h4" className="fotogallery-title">
             FotoGallerij - Ontdek de Beste Films
           </Typography>
           <Typography variant="h6" className="fotogallery-description">
             Blader door onze collectie van topfilms en ontdek nieuwe favorieten.
           </Typography>
-        </header>
+        </helmet>
 
         <section aria-labelledby="search-title" className="fotogallery-search">
           <Typography variant="h5" id="search-title">

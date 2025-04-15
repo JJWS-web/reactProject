@@ -29,6 +29,17 @@
     max-height: 90vh;
 }
 
+.card-container {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    animation: fadeIn 0.3s ease;
+}
+
+.card-container:hover {
+    transform: scale(1.05);
+}
+
+
 
 
 @media (min-width: 1024px) {

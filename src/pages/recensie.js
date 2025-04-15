@@ -200,8 +200,6 @@ class Recensie extends Component {
 /**
  * Responsive wrapper for Recensie.
  * Adds mobile responsiveness based on screen width.
- * @param {object} props - Props passed to the Recensie component.
- * @returns {JSX.Element} - The responsive Recensie component.
  */
 function ResponsiveRecensie(props) {
   const isMobile = useMediaQuery('(max-width:600px)');

@@ -64,8 +64,8 @@ class AccountMenu extends Component {
                   <ListItem key={index} disablePadding>
                     <ListItemButton
                       onClick={() => {
-                        navigate(item.path); // Navigate to the selected menu item's path
-                        this.setState({ drawerOpen: false }); // Close the drawer after navigation
+                        navigate(item.path); 
+                        this.setState({ drawerOpen: false }); 
                       }}
                     >
                       <ListItemText primary={item.label} />
